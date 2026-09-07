@@ -4,9 +4,9 @@ function minDate(dates) {
 	let DateMin = dates[0].slice(8,10);
 
 	for (let date of dates) {
-		 let year = date[0].slice(0,4);
-  let Month = date[0].slice(5,7);
-	let Date = date[0].slice(8,10);
+		 let year = date.slice(0,4);
+  let Month = date.slice(5,7);
+	let Date = date.slice(8,10);
 		if (year > yearMin) {
 			continue;
 		}else if(year < yearMin) {
