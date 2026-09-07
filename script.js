@@ -1,37 +1,35 @@
 function minDate(dates) {
-  //write you code here
-	let yearMin=3000;
-	for (let date of dates) {
-		 yearMin = Math.min(yearMin , date.slice(0,4));
-	}
-	let newArr =[];
-	for (let date of dates) {
-		if (yearMin == date.slice(0,4)) {
-			newArr.push(date);
-		}
-	}
-	let monthMin =3000;
-	for (let arr of newArr) {
-		monthMin = Math.min(monthMin, arr.slice(5,7));
-	}
-	let newArr2 = [];
-	for (let arr of newArr) {
-		if (monthMin == arr.slice(5,7)) {
-			newArr2.push(arr);
-		}
-	}
+  let yearMin = dates[0].slice(0,4);
+  let MonthMin = dates[0].slice(5,7);
+	let DateMin = dates[0].slice(8,10);
 
-	let dateMin =3000;
-	for (let arr of newArr2) {
-		dateMin = Math.min(dateMin, arr.slice(7,9));
+	for (let date of dates) {
+		 let year = dates[0].slice(0,4);
+  let Month = dates[0].slice(5,7);
+	let Date = dates[0].slice(8,10);
+		if (year > yearMin) {
+			continue;
+		}else if(year < yearMin) {
+			yearMin = year;
+			MonthMin = Month;
+			DateMin = Date;
+		}else{
+			if(MonthMin > Month){
+				yearMin = year;
+			MonthMin = Month;
+			DateMin = Date;
+			}else if(MonthMin < Month){
+				continue;
+			}else{
+				if (date < DateMin) {
+					yearMin = year;
+		     	MonthMin = Month;
+			   DateMin = Date;
+				}
+			}
+		}
 	}
-	
-	for (let arr of newArr2) {
-		if(dateMin == arr.slice(7,9)) {
-			return arr;
-		} 
-	}
-	return -1;
+	return(`${yearMin}/${MonthMin}/${DateMin}`);
 	
 }
 
